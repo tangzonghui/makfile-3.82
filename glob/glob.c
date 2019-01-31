@@ -50,12 +50,12 @@ USA.  */
    it is simpler to just do this in the source for each such file.  */
 
 #define GLOB_INTERFACE_VERSION 1
-//#if !defined _LIBC && defined __GNU_LIBRARY__ && __GNU_LIBRARY__ > 1
+#if !defined _LIBC && defined __GNU_LIBRARY__ && __GNU_LIBRARY__ > 1
 # include <gnu-versions.h>
 # if _GNU_GLOB_INTERFACE_VERSION == GLOB_INTERFACE_VERSION
 #  define ELIDE_CODE
 # endif
-//#endif
+#endif
 
 #ifndef ELIDE_CODE
 
@@ -208,7 +208,7 @@ my_realloc (p, n)
 #endif /* __GNU_LIBRARY__ || __DJGPP__ */
 
 
-#if !defined __alloca && !defined __GNU_LIBRARY__
+//#if !defined __alloca && !defined __GNU_LIBRARY__
 
 # ifdef	__GNUC__
 #  undef alloca
@@ -229,7 +229,7 @@ extern char *alloca ();
 
 # define __alloca	alloca
 
-#endif
+//#endif
 
 #ifndef __GNU_LIBRARY__
 # define __stat stat
